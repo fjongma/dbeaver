@@ -14,13 +14,18 @@
  * See the License for the specific language governing permissions and
  * limitations under the License.
  */
-package org.jkiss.dbeaver.model.ai;
+package org.jkiss.dbeaver.ui.controls.resultset;
 
-import java.util.Map;
+import org.eclipse.core.runtime.IStatus;
+import org.jkiss.code.NotNull;
 
-public record AIAssistantSettings(
-    boolean aiDisabled,
-    String activeEngine,
-    Map<String, AIEngineSettings> engineConfigurations
-) {
+/**
+ * An action that can be performed when an error occurs.
+ */
+public interface IResultSetErrorAction {
+    void perform(@NotNull IResultSetContainer container, @NotNull IStatus status);
+
+    default boolean isVisible(@NotNull IResultSetContainer container, @NotNull IStatus status) {
+        return true;
+    }
 }
