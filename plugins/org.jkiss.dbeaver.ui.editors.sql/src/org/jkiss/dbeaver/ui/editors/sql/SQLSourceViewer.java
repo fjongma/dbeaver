@@ -1,6 +1,6 @@
 /*
  * DBeaver - Universal Database Manager
- * Copyright (C) 2010-2024 DBeaver Corp and others
+ * Copyright (C) 2010-2025 DBeaver Corp and others
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -110,6 +110,9 @@ public class SQLSourceViewer<T extends DBPScriptObject & DBSObject> extends SQLE
         if (editorInput instanceof IDatabaseEditorInput) {
             Collection<String> attributeNames = ((IDatabaseEditorInput)editorInput).getAttributeNames();
             options.put(DBPScriptObject.OPTION_DDL_SOURCE, true);
+            //FJ [HPE sqlmx]: must clear existing ddl in buffer, by forcing refresh
+            //    if not, the same DDL lines may appear twice when FK constraints are present.
+            options.put(DBPScriptObject.OPTION_REFRESH, true);
             if (!attributeNames.isEmpty()) {
                 for (String name : attributeNames) {
                     Object attribute = ((IDatabaseEditorInput)editorInput).getAttribute(name);
