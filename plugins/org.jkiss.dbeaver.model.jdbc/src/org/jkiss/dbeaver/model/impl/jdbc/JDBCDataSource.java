@@ -646,6 +646,11 @@ public abstract class JDBCDataSource extends AbstractDataSource
             if (SQLConstants.DATA_TYPE_TINYINT.equalsIgnoreCase(typeName)) {
                 return Types.TINYINT;
             }
+        } else if (valueType == Types.ROWID) {
+        	//FJ [HPE sqlmx] SQL/MX driver returns -8 for NCHAR] 
+        	if ("NCHAR".equalsIgnoreCase(typeName)) {
+        		return Types.NCHAR;
+        	}
         }
         return valueType;
     }
@@ -664,6 +669,7 @@ public abstract class JDBCDataSource extends AbstractDataSource
             case Types.BOOLEAN:
                 return DBPDataKind.BOOLEAN;
             case Types.CHAR:
+            case Types.NCHAR:                                //FJ [HPE sqlmx] NCHAR missing
             case Types.VARCHAR:
             case Types.NVARCHAR:
             case Types.LONGVARCHAR:

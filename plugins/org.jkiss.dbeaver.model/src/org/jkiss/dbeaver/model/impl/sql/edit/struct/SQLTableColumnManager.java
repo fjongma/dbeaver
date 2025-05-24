@@ -1,6 +1,6 @@
 /*
  * DBeaver - Universal Database Manager
- * Copyright (C) 2010-2024 DBeaver Corp and others
+ * Copyright (C) 2010-2025 DBeaver Corp and others
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -56,7 +56,22 @@ public abstract class SQLTableColumnManager<OBJECT_TYPE extends DBSEntityAttribu
     }
 
     protected final ColumnModifier<OBJECT_TYPE> DataTypeModifier = (monitor, column, sql, command) -> {
-        final String typeName = column.getTypeName();
+    	//FJ [HPE sqlmx]
+        // Note that this does not fix unsigned numeric fields.
+    	// Unsigned numeric fields are supported by SQL/MX, but creating support in DBeaver
+    	// is too complicated, because the type name is already put into the buffer before 
+    	// we get to adding precision and scale.
+    	// final String typeName = column.getTypeName();
+    	String typeName = column.getTypeName();    
+        if (typeName.equals("NUMERIC SIGNED") || typeName.equals ("NUMERIC UNSIGNED") ) {
+            log.debug("****** SQLTableColumnManager changing typeName for col: "+ column.getName() + " to NUMERIC");
+        	typeName = "NUMERIC";
+        } else {
+        	if (typeName.equals("DECIMAL SIGNED") || typeName.equals ("DECIMAL UNSIGNED") ) {
+                log.debug("****** SQLTableColumnManager changing typeName for col: "+ column.getName() + " to DECIMAL");
+            	typeName = "DECIMAL";
+        	}
+        }
         DBPDataKind dataKind = column.getDataKind();
         final DBSDataType dataType = findDataType(column, typeName);
         sql.append(' ').append(typeName);

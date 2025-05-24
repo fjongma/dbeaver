@@ -1,6 +1,6 @@
 /*
  * DBeaver - Universal Database Manager
- * Copyright (C) 2010-2024 DBeaver Corp and others
+ * Copyright (C) 2010-2025 DBeaver Corp and others
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
  * you may not use this file except in compliance with the License.
@@ -113,8 +113,12 @@ class IndexCache extends JDBCCompositeCache<GenericStructContainer, GenericTable
             // [JDBC] Some drivers return empty index names
             indexName = parent.getName().toUpperCase(Locale.ENGLISH) + "_INDEX";
         }
-
-        return owner.getDataSource().getMetaModel().createIndexImpl(
+        if  (indexName.equals(parent.getName())) {
+            //FJ [HPE sqlmx] the primary key index is part of the base table and does not require a CREATE or DROP statement
+        	log.debug("Skip sqlmx primary key index '" + indexName + "' of '" + DBUtils.getObjectFullName(parent, DBPEvaluationContext.DDL) + "'" ); 
+			return null;
+        } else {
+            return owner.getDataSource().getMetaModel().createIndexImpl(
             parent,
             isNonUnique,
             indexQualifier,
@@ -122,6 +126,7 @@ class IndexCache extends JDBCCompositeCache<GenericStructContainer, GenericTable
             indexName,
             indexType,
             true);
+        }
     }
 
     @Nullable
