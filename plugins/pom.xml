@@ -72,6 +72,7 @@
         <module>org.jkiss.dbeaver.ext.snowflake</module>
         <module>org.jkiss.dbeaver.ext.spanner</module>
         <module>org.jkiss.dbeaver.ext.sqlite</module>
+        <module>org.jkiss.dbeaver.ext.sqlmx</module>
         <module>org.jkiss.dbeaver.ext.vertica</module>
         <module>org.jkiss.dbeaver.ext.teradata</module>
         <module>org.jkiss.dbeaver.ext.tidb</module>

@@ -176,6 +176,21 @@
             <drivers managable="true">
 
                 <!-- Real drivers -->
+                
+                <driver
+                    id="sqlmx"
+                    label="HPE NonStop SQL/MX"
+                    icon="icons/sqlmx_icon.png"
+                    iconBig="icons/sqlmx_icon_big.png"
+                    class="com.tandem.t4jdbc.SQLMXDriver"
+                    sampleURL="jdbc:t4sqlmx://{host}:{port}/serverDataSource={database}"
+                    defaultPort="18650"
+                    webURL="https://www.hpe.com"
+                    description="HPE NonStop SQL/MX"
+                    supportedConfigurationTypes="MANUAL,URL"
+                    categories="sql">
+                    <!-- file type="jar" path="c:/lib/t4sqlmx.jar" /  -->
+                </driver>
 
                 <driver
                     id="sap_maxdb"
