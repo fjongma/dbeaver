@@ -3,10 +3,45 @@
 
 <plugin>
 
-    <extension point="org.jkiss.dbeaver.generic.meta">
-        <meta id="sqlmx" 
-        class="org.jkiss.dbeaver.ext.sqlmx.model.SqlmxMetaModel" 
-        driverClass="com.tandem.t4jdbc.SQLMXDriver"/>
-    </extension>
+	<extension point="org.jkiss.dbeaver.generic.meta">
+		<meta id="sqlmx"
+			class="org.jkiss.dbeaver.ext.sqlmx.model.SqlmxMetaModel"
+			driverClass="com.tandem.t4jdbc.SQLMXDriver" />
+	</extension>
+    
+    <!--  when this definition is placed here instead of ext.generic.xml as suggested driver manager 
+    cannot find the icon and writes: Bad image: platform:/plugin/org.jkiss.dbeaver.ext.sqlmx/icons/sqlmx_icon.png
+     -->
+     
+	<!-- extension point="org.jkiss.dbeaver.dataSourceProvider">
+		<datasource
+			class="org.jkiss.dbeaver.ext.generic.GenericDataSourceProvider"
+			description="SQL/MX"
+			id="sqlmx"
+			parent="generic"
+			label="NonStop SQL/MX"
+			icon="icons/sqlmx_icon.png"
+			dialect="generic">
+		
+			
+			<drivers managable="true">
+
+				<driver
+					id="sqlmx"
+					label="NonStop SQL/MX"
+					icon="icons/sqlmx_icon.png"
+					iconBig="icons/sqlmx_icon_big.png"
+					class="com.tandem.t4jdbc.SQLMXDriver"
+					sampleURL="jdbc:t4sqlmx://{host}:{port}/serverDataSource={database}"
+					defaultPort="18650"
+					webURL="https://www.hpe.com/info/nonstop"
+					description="HPE NonStop SQL/MX"
+					supportedConfigurationTypes="MANUAL,URL"
+					categories="sql">
+				</driver>
+			</drivers>
+		</datasource>
+	</extension    -->
+
 
 </plugin>

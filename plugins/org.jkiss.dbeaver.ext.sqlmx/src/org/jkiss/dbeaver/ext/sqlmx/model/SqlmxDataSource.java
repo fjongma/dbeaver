@@ -34,18 +34,12 @@ import org.jkiss.dbeaver.Log;
  * Sqlmx datasource
  */
 public class SqlmxDataSource extends GenericDataSource {
-    private static final Log log = Log.getLog(SqlmxDataSource.class);
+    //private static final Log log = Log.getLog(SqlmxDataSource.class);
     public SqlmxDataSource(DBRProgressMonitor monitor, DBPDataSourceContainer container, GenericMetaModel metaModel)
         throws DBException {
         super(monitor, container, metaModel, new SqlmxSQLDialect());
 //FJ        log.debug ("****** SqlmxDataSource called ");
     }
 
-    @Override
-    protected boolean isPopulateClientAppName() {
-    	// SQL/MX drivr does not support this type of settingthe application name
-        return false;
-    }
-    
    
 }

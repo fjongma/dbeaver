@@ -110,8 +110,8 @@ public class SQLSourceViewer<T extends DBPScriptObject & DBSObject> extends SQLE
         if (editorInput instanceof IDatabaseEditorInput) {
             Collection<String> attributeNames = ((IDatabaseEditorInput)editorInput).getAttributeNames();
             options.put(DBPScriptObject.OPTION_DDL_SOURCE, true);
-            //FJ [HPE sqlmx]: must clear existing ddl in buffer, by forcing refresh
-            //    if not, the same DDL lines may appear twice when FK constraints are present.
+            // Must clear existing ddl in buffer, by forcing refresh
+            // if not, the same DDL lines may appear twice when FK constraints are present.
             options.put(DBPScriptObject.OPTION_REFRESH, true);
             if (!attributeNames.isEmpty()) {
                 for (String name : attributeNames) {

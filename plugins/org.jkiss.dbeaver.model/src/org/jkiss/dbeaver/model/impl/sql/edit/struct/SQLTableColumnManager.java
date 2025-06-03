@@ -56,11 +56,10 @@ public abstract class SQLTableColumnManager<OBJECT_TYPE extends DBSEntityAttribu
     }
 
     protected final ColumnModifier<OBJECT_TYPE> DataTypeModifier = (monitor, column, sql, command) -> {
-    	//FJ [HPE sqlmx]
-        // Note that this does not fix unsigned numeric fields.
-    	// Unsigned numeric fields are supported by SQL/MX, but creating support in DBeaver
-    	// is too complicated, because the type name is already put into the buffer before 
-    	// we get to adding precision and scale.
+    	// Some databases support SQL Extensions that allow signed and unsigned numeric definitions.
+    	// They may therefore contain additional information in the typeName field (as shown below. In Java, the NUMERIC
+    	// and DECIMAL data types are always signed. If the typeName value passes unchanged, the precision and scale 
+    	// information will be lost and the DDL column information will become incorrect.
     	// final String typeName = column.getTypeName();
     	String typeName = column.getTypeName();    
         if (typeName.equals("NUMERIC SIGNED") || typeName.equals ("NUMERIC UNSIGNED") ) {

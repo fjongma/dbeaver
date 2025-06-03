@@ -1,3 +1,5 @@
+// NOTE: REMOVED FROM BRANCH SINCE NOT USED AT THIS TIME 
+
 /*
  * DBeaver - Universal Database Manager
  * Copyright (C) 2010-2025 DBeaver Corp and others

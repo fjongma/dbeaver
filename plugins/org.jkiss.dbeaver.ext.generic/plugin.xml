@@ -189,7 +189,6 @@
                     description="HPE NonStop SQL/MX"
                     supportedConfigurationTypes="MANUAL,URL"
                     categories="sql">
-                    <!-- file type="jar" path="c:/lib/t4sqlmx.jar" /  -->
                 </driver>
 
                 <driver

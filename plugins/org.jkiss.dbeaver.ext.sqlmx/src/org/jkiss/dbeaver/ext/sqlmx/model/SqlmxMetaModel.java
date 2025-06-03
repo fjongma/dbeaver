@@ -49,7 +49,7 @@ import java.util.Map;
  */
 public class SqlmxMetaModel extends GenericMetaModel
 {
-    private static final Log log = Log.getLog(SqlmxMetaModel.class);
+//    private static final Log log = Log.getLog(SqlmxMetaModel.class);
 
     public SqlmxMetaModel() {
     	super();
