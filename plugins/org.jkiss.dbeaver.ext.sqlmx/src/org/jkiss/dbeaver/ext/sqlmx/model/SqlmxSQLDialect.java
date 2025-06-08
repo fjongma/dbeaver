@@ -1,5 +1,3 @@
-// NOTE: REMOVED FROM BRANCH SINCE NOT USED AT THIS TIME 
-
 /*
  * DBeaver - Universal Database Manager
  * Copyright (C) 2010-2025 DBeaver Corp and others
@@ -27,6 +25,7 @@ import org.jkiss.dbeaver.model.impl.jdbc.JDBCDataSource;
 
 /**
  * Sqlmx dialect
+ * Note: this is a placeholder for future additions
  */
 public class SqlmxSQLDialect extends GenericSQLDialect {
 

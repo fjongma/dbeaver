@@ -9,7 +9,7 @@
 			driverClass="com.tandem.t4jdbc.SQLMXDriver" />
 	</extension>
     
-    <!--  when this definition is placed here instead of ext.generic.xml as suggested driver manager 
+    <!--  when this definition is placed here instead of ext.generic.xml as suggested, the driver manager 
     cannot find the icon and writes: Bad image: platform:/plugin/org.jkiss.dbeaver.ext.sqlmx/icons/sqlmx_icon.png
      -->
      
