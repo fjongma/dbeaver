@@ -40,6 +40,9 @@ public class SqlmxDataSource extends GenericDataSource {
         super(monitor, container, metaModel, new SqlmxSQLDialect());
 //FJ        log.debug ("****** SqlmxDataSource called ");
     }
-
-   
+    protected boolean isPopulateClientAppName() {
+    	// default for deived classes is to 'Enable'. See GenericDataSource.java
+        return false;
+    }
+  
 }
