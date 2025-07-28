@@ -112,7 +112,7 @@ public abstract class SQLTableColumnManager<OBJECT_TYPE extends DBSEntityAttribu
     }
 
     @Override
-    public boolean canEditObject(OBJECT_TYPE object)
+    public boolean canEditObject(@NotNull OBJECT_TYPE object)
     {
         DBSEntity table = object.getParentObject();
         return table != null && !DBUtils.isView(table);
